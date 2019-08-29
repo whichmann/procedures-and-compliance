@@ -1,20 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import hello from './Components/Hello';
+import Clock from './Components/Clock';
 
-const me = {
-  name: "PwC Procedures",
-  occupation: "PwC"
-}
 
-const capitalizeName = (obj) => {return obj.name+"."}
+
+const addDot = (obj) => {return obj.appName+"."}
 
 function App() {
+  const [purpose, setPurpose] = useState({appName: 'PwC Procedures', description: "PwC"})
+  const [currentDay, setCurrentDay] = useState("Friday")
+  
+  console.log(currentDay);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <div>{"Hello" + 2+2}</div>
-        <div>{capitalizeName(me)}</div>
+      <header>
+        <div>{addDot(purpose)}</div>
+        <Clock time={currentDay}></Clock>
       </header>
     </div>
   );
